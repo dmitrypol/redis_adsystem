@@ -9,3 +9,9 @@
 User.delete_all
 admin = User.create(email: "admin@email.com", password: 'password')
 admin.add_role :admin
+
+Ad.delete_all
+20.times do |i|
+  Ad.create(keywords: "keyword#{rand((1..5))}", cpc: rand(1..10), budget: rand(20..50),
+    title: "title#{i}", body: "body#{i}", link: "http://website#{i}.com")
+end
