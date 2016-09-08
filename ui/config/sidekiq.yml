@@ -1,0 +1,7 @@
+---
+:concurrency: 1
+#:logfile: log/sidekiq.log
+:queues:
+  - [click, 4]
+  - [default, 2]
+  - [low, 1]
