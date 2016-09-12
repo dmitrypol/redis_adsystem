@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160908225854) do
+ActiveRecord::Schema.define(version: 20160912213337) do
 
   create_table "ads", force: :cascade do |t|
     t.string   "keywords"
@@ -21,6 +21,17 @@ ActiveRecord::Schema.define(version: 20160908225854) do
     t.string   "link"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "clicks", force: :cascade do |t|
+    t.integer  "ad_id"
+    t.string   "ip"
+    t.string   "user_agent"
+    t.string   "url"
+    t.string   "time"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["ad_id"], name: "index_clicks_on_ad_id"
   end
 
   create_table "roles", force: :cascade do |t|

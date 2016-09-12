@@ -1,0 +1,28 @@
+This repo contains 2 applications UI (Rails app built on top of relational DB) and API (which only talks to Redis)
+
+First make sure you have Redis running on your dev box.  
+
+UI:
+cd ui
+bundle
+rake db:migrate && rake db:seed
+look in seeds.rb for the random data that was generated
+rails s -p 3001
+
+browse to http://localhost:3001
+login with admin@email.com / password
+browse to http://localhost:3001/admin for basic RailsAdmin CRUD UI
+browse to http://localhost:3001/sidekiq for Sidekiq UI
+
+API
+cd api
+bundle
+rails s
+
+browse to http://localhost:3000/?kw=keyword1
+you will see output like this: 
+"{"title":"title2","body":"body2","cpc":8,"link":"http://localhost:3000/click?url=aHR0cDovL3dlYnNpdGUyLmNvbQ%3D%3D%0A"}",
+
+browse to link URL and you will be redirected to website1-10.com
+browse to http://localhost:3001/sidekiq/queues/click and you will see 1 click queued up to process.  
+in UI app bash run "sidekiq" and it will process the click job

@@ -7,4 +7,4 @@ Sidekiq.configure_client do |config|
 end
 
 redis_conn = Redis.new(host: Rails.application.config.redis_host, port: 6379, db: 0, driver: :hiredis)
-REDIS_ADS = Redis::Namespace.new(:ads, redis: redis_conn)
+REDIS_ADS = Redis::Namespace.new('ads', redis: redis_conn)
