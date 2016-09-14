@@ -12,6 +12,8 @@ admin.add_role :admin
 
 REDIS_ADS.del("*")
 
+Click.delete_all
+
 Ad.delete_all
 10.times do |i|
   Ad.create(keywords: "keyword#{rand((1..5))}", cpc: rand(1..10), budget: rand(20..50),

@@ -6,28 +6,13 @@ class Ad < ApplicationRecord
   before_save :remove_ads
   after_save :update_ads
 
-  def redirect_url
-    query = { adid: id, url: Base64.encode64(link) }.to_query
-    "http://localhost:3000/click?#{query}"
-  end
-
-  def ad_content
-    # => encode link into redirect URL
-    output = {title: title, body: body, cpc: cpc, link: redirect_url}
-    return output
-  end
-
-  def decrement_budget
-    self.decrement(budget, cpc)
-  end
-
 private
-  
+
   def remove_ads
     keywords.split(',').each do |kw|
       # => remove ad
       REDIS_ADS.srem  kw, ad_content
-    end    
+    end
   end
 
   def update_ads
@@ -40,6 +25,17 @@ private
         REDIS_ADS.srem  kw, ad_content
       end
     end
+  end
+
+  def ad_content
+    # => encode link into redirect URL
+    output = {title: title, body: body, cpc: cpc, link: redirect_url}
+    return output
+  end
+
+  def redirect_url
+    query = { adid: id, url: Base64.encode64(link) }.to_query
+    "http://localhost:3000/click?#{query}"
   end
 
 end
