@@ -1,7 +1,7 @@
 class AdController < ApplicationController
   def index
     ad_params = request.params.except(:controller, :action)
-    ads = REDIS_ADS.smembers ad_params[:kw]
+    ads = GetAds.new(keyword: ad_params[:kw]).perform
     if ads
       render json: ads
     else

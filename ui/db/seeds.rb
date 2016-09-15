@@ -11,6 +11,7 @@ admin = User.create(email: "admin@email.com", password: 'password')
 admin.add_role :admin
 
 REDIS_ADS.del("*")
+REDIS_IMPR.del("*")
 
 Click.delete_all
 
