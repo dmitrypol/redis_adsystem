@@ -21,3 +21,9 @@
 
 en:
   hello: "Hello world"
+  admin:
+    actions:
+      keywords:
+        title: 'keywords'
+        menu: 'Keywords w/in last week'
+        breadcrumb: 'Keywords'

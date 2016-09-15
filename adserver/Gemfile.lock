@@ -43,6 +43,8 @@ GEM
     byebug (9.0.5)
     concurrent-ruby (1.0.2)
     connection_pool (2.2.0)
+    database_cleaner (1.5.3)
+    diff-lcs (1.2.5)
     erubis (2.7.0)
     ffi (1.9.14)
     globalid (0.3.7)
@@ -62,6 +64,7 @@ GEM
     mime-types-data (3.2016.0521)
     mini_portile2 (2.1.0)
     minitest (5.9.0)
+    mock_redis (0.17.0)
     nio4r (1.2.1)
     nokogiri (1.6.8)
       mini_portile2 (~> 2.1.0)
@@ -104,6 +107,23 @@ GEM
     redis (3.3.1)
     redis-namespace (1.5.2)
       redis (~> 3.0, >= 3.0.4)
+    rspec-core (3.5.3)
+      rspec-support (~> 3.5.0)
+    rspec-expectations (3.5.0)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.5.0)
+    rspec-mocks (3.5.0)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.5.0)
+    rspec-rails (3.5.2)
+      actionpack (>= 3.0)
+      activesupport (>= 3.0)
+      railties (>= 3.0)
+      rspec-core (~> 3.5.0)
+      rspec-expectations (~> 3.5.0)
+      rspec-mocks (~> 3.5.0)
+      rspec-support (~> 3.5.0)
+    rspec-support (3.5.0)
     sidekiq (4.1.2)
       concurrent-ruby (~> 1.0)
       connection_pool (~> 2.2, >= 2.2.0)
@@ -132,13 +152,16 @@ PLATFORMS
 
 DEPENDENCIES
   byebug
+  database_cleaner
   hiredis
   listen (~> 3.0.5)
+  mock_redis
   puma (~> 3.0)
   rails (~> 5.0.0, >= 5.0.0.1)
   readthis
   redis
   redis-namespace
+  rspec-rails
   sidekiq
   spring
   spring-watcher-listen (~> 2.0.0)

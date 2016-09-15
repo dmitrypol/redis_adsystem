@@ -1,0 +1,18 @@
+<table class='table table-striped table-bordered table-hover table-condensed'>
+  <thead>
+    <th>Keyword</th>
+    <th>Count</th>
+  </thead>
+  <tbody>
+    <% REDIS_KW.keys.each do |keyword| %>
+      <tr>
+        <td>
+          <%= keyword %>
+        </td>
+        <td>
+          <%= REDIS_KW.get keyword %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

@@ -37,3 +37,9 @@ gem 'redis-namespace'
 gem 'readthis'
 gem 'hiredis'
 gem 'sidekiq'
+
+group :development, :test do
+  gem 'rspec-rails'
+  gem 'mock_redis'
+  gem 'database_cleaner'
+end

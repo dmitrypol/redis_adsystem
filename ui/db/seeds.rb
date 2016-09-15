@@ -10,8 +10,9 @@ User.delete_all
 admin = User.create(email: "admin@email.com", password: 'password')
 admin.add_role :admin
 
-REDIS_ADS.del("*")
-REDIS_IMPR.del("*")
+REDIS_ADS.flushdb
+REDIS_IMPR.flushdb
+REDIS_KW.flushdb
 
 Click.delete_all
 
@@ -19,4 +20,8 @@ Ad.delete_all
 10.times do |i|
   Ad.create(keywords: "keyword#{rand((1..5))}", cpc: rand(1..10), budget: rand(20..50),
     title: "title#{i}", body: "body#{i}", link: "http://website#{i}.com")
+end
+
+10.times do |i|
+  REDIS_KW.incrby("keyword#{i}", i)
 end

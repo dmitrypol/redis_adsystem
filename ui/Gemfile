@@ -63,3 +63,10 @@ gem 'rails_admin', '>= 1.0.0.rc'
 gem 'rails_admin_pundit', github: 'sudosu/rails_admin_pundit'
 
 gem 'bootstrap-sass'
+
+group :development, :test do
+  gem 'rspec-rails'
+  gem 'factory_girl_rails'
+  gem 'mock_redis'
+  gem 'database_cleaner'
+end

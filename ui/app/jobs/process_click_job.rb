@@ -2,11 +2,12 @@ class ProcessClickJob < ApplicationJob
   queue_as :click
 
   def perform(*args)
-    adid = self.arguments.first['adid'].to_i
-    # record the click
-    Click.create!(ad_id: adid)
+    ad_id = args.first[:ad_id].to_i
+    ad = Ad.find(ad_id)
     # decrement ad budget
-    ad = Ad.find(adid)
     ad.update(budget: ad.budget - ad.cpc)
+    # record the click
+    ad.clicks.create
+  rescue Exception => e
   end
 end
