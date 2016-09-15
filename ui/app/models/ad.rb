@@ -29,7 +29,7 @@ private
 
   def ad_content
     # => encode link into redirect URL
-    output = {adid: id, title: title, body: body, cpc: cpc, link: redirect_url}
+    output = {adid: id, title: title, body: body, cpc: cpc, link: redirect_url}.to_json
     return output
   end
 

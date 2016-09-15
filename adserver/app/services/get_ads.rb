@@ -14,12 +14,12 @@ private
 
   def record_impressions
     # => current date and hour
-    timestamp = Time.now.hour
+    date_hour = Time.now.strftime("%Y%m%d:%H")
     @ads.each do |ad|
-      #Rails.logger.info ad[:adid]    TODO
       # => grab adid from each JSON
-      adid = ''
-      key = [adid, timestamp].join(':')
+      ad2 = JSON.parse(ad)
+      adid = ad2['adid']
+      key = [adid, date_hour].join(':')
       REDIS_IMPR.incr key
     end
   end

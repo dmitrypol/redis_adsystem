@@ -4,9 +4,10 @@ Rails.application.routes.draw do
   get 'home/index'
 
   require 'sidekiq/web'
+  require 'sidekiq/cron/web'
   mount Sidekiq::Web => '/sidekiq'
 
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
-  
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
