@@ -38,6 +38,7 @@ ActiveRecord::Schema.define(version: 20160914233153) do
     t.integer  "ad_id"
     t.integer  "date"
     t.integer  "hour"
+    t.integer  "counter"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["ad_id"], name: "index_impressions_on_ad_id"

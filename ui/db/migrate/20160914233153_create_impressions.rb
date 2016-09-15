@@ -4,6 +4,7 @@ class CreateImpressions < ActiveRecord::Migration[5.0]
       t.references :ad, foreign_key: true
       t.integer :date
       t.integer :hour
+      t.integer :counter
 
       t.timestamps
     end
