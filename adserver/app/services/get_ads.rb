@@ -28,8 +28,10 @@ private
 
   # keep track which keywords get requested at least once a week, data remains in Redis
   def record_keyword
-    REDIS_KW.incr @keyword
-    REDIS_KW.expire @keyword, 1.week.to_i
+    REDIS_KW.pipelined do
+      REDIS_KW.incr @keyword
+      REDIS_KW.expire @keyword, 1.week.to_i
+    end
   end
 
 end
