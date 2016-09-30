@@ -20,9 +20,11 @@ if Rails.env.test?
 	REDIS_ADS =  Redis::Namespace.new('ads', redis: MockRedis.new )
   REDIS_IMPR = Redis::Namespace.new('impr', redis: MockRedis.new )
   REDIS_KW =   Redis::Namespace.new('kw', redis: MockRedis.new )
+  REDIS_CODE_COV =  Redis::Namespace.new('codecov', redis: MockRedis.new)
 else
   redis_conn = Redis.new(host: Rails.application.config.redis_host, port: 6379, db: 0, driver: :hiredis)
   REDIS_ADS =  Redis::Namespace.new('ads', redis: redis_conn)
   REDIS_IMPR = Redis::Namespace.new('impr', redis: redis_conn)
   REDIS_KW   = Redis::Namespace.new('kw',  redis: redis_conn)
+  REDIS_CODE_COV =  Redis::Namespace.new('codecov', redis: redis_conn)
 end

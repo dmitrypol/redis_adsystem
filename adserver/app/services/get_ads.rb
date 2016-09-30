@@ -17,12 +17,14 @@ private
   def record_impressions
     # => current date and hour
     date_hour = Time.now.strftime("%Y%m%d:%H")
-    @ads.each do |ad|
-      # => grab ad_id from each JSON
-      ad2 = JSON.parse(ad)
-      ad_id = ad2['ad_id']
-      key = [ad_id, date_hour].join(':')
-      REDIS_IMPR.incr key
+    REDIS_IMPR.pipelined do
+      @ads.each do |ad|
+        # => grab ad_id from each JSON
+        ad2 = JSON.parse(ad)
+        ad_id = ad2['ad_id']
+        key = [ad_id, date_hour].join(':')
+        REDIS_IMPR.incr key
+      end
     end
   end
 

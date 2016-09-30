@@ -6,17 +6,20 @@ class Ad < ApplicationRecord
 
   after_save :update_ads_cache
 
+  def name
+    title
+  end
+
 private
 
   def update_ads_cache
     # => check if any important attributes changed
-    if keywords_changed? or cpc_changed? or budget_changed? or title_changed? or body_changed? or link_changed?
-      REDIS_ADS.pipelined do
-        keywords.split(',').each do |kw|
-          REDIS_ADS.srem  kw, ad_content  # => remove ad
-          # => insert ad if there is budget
-          REDIS_ADS.sadd  kw, ad_content if budget > 0
-        end
+    return unless keywords_changed? or cpc_changed? or budget_changed? or title_changed? or body_changed? or link_changed?
+    REDIS_ADS.pipelined do
+      keywords.split(',').each do |kw|
+        REDIS_ADS.srem  kw, ad_content  # => remove ad
+        # => insert ad if there is budget
+        REDIS_ADS.sadd  kw, ad_content if budget > 0
       end
     end
   end
