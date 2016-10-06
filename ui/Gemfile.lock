@@ -12,6 +12,15 @@ GIT
       pundit (>= 0.2.3)
       rails_admin (>= 0.6.2)
 
+PATH
+  remote: /home/dmitry/git/adhoc/redis_code_cov
+  specs:
+    redis_code_cov (0.1.0)
+      activesupport
+      readthis
+      redis (~> 3.3)
+      redis-namespace (~> 1.5)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -291,6 +300,7 @@ DEPENDENCIES
   readthis
   redis
   redis-namespace
+  redis_code_cov!
   remotipart!
   rolify
   rspec-rails
