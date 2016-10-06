@@ -72,3 +72,8 @@ group :development, :test do
   gem 'mock_redis'
   gem 'database_cleaner'
 end
+
+group :development do
+  gem 'better_errors'
+  gem 'binding_of_caller'
+end

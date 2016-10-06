@@ -1,6 +1,6 @@
 class ApplicationRecord < ActiveRecord::Base
   self.abstract_class = true
 
-  include RedisCodeCov
-  
+  include RedisCodeCovModel
+
 end

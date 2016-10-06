@@ -9,13 +9,6 @@ class ApplicationController < ActionController::Base
     redirect_to main_app.root_path, alert: exception.message
   end
 
-  before_action :redis_code_cov
-
-private
-
-  def redis_code_cov
-    key = [self.class.name, params[:action]].join('.')
-    REDIS_CODE_COV.incr key
-  end
+  include RedisCodeCovController
 
 end

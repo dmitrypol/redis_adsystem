@@ -1,4 +1,4 @@
-module RedisCodeCov
+module RedisCodeCovModel
   extend ActiveSupport::Concern
 
   extend AfterDo
